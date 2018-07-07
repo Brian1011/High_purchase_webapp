@@ -31,7 +31,7 @@ Route::post('/Item', 'ItemsController@addItem');
 Route::get('/ItemForm', 'ItemsController@showAddItemForm');
 
 //view updateItem Form
-Route::get('/Item/View/{id}', 'ItemsController@');
+Route::get('/Item/View/{id}', 'ItemsController@viewSpecificItem');
 
 //view specific item
 Route::get('/Item/Edit/{id}', 'ItemsController@viewSpecificItem');
