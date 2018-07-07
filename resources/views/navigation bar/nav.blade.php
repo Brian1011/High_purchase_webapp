@@ -20,7 +20,7 @@
 
         <ul class="nav navbar-nav">
             <!--if you are logged in as customer you will see purchases-->
-                <li><a href="/fees">Purchases</a></li>
+                <li><a href="/all_purchases">Purchases</a></li>
 
             <!--if you are logged in as manager or as admin you will see items link-->
                  <li class="dropdown">

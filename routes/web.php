@@ -12,11 +12,10 @@
 */
 
 Route::get('/', function () {
-    return view('index');
+    return view('welcome');
 });
 
 //Auth::routes();
-
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/register', 'UsersConroller@showRegistrationForm');
 
@@ -53,6 +52,11 @@ Route::get('/addmanager', function () {
 //view one single item
 Route::get('/purchase', function (){
     return view('purchase_item');
+});
+
+//view all purchases made by a customer
+Route::get('/all_purchases', function (){
+   return view('all_purchases');
 });
 
 //add manager
