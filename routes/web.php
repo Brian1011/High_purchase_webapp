@@ -30,7 +30,7 @@ Route::get('/ItemForm', 'ItemsController@showAddItemForm');
 Route::get('/Item/View/{id}', 'ItemsController@');
 
 //view specific item
-Route::get('/Item{id}', 'ItemsController@viewSpecificItem');
+Route::get('/Item/Edit/{id}', 'ItemsController@viewSpecificItem');
 
 //view all item
 Route::get('/Item', 'ItemsController@showallItems');

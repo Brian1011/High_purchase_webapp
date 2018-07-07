@@ -9,16 +9,16 @@ class ItemsController extends Controller
 {
     public function showallItems(){
         $items = Items::all();
-        return view('items', ['items' =>$items]);
+        return view('Admin.Item', ['items' =>$items]);
     }
 
     public function viewSpecificItem($id){
         $items = Items::find($id);
-        return view('items.specificitem', ['items' => $items]);
+        return view('Admin.addItem', ['items' => $items]);
     }
 
     public function showAddItemForm(){
-        return view('games.create');
+        return view('Admin.addItem');
     }
 
     //checks if the form is blank if it is it updates the content if it is not it creates a new item
@@ -33,7 +33,7 @@ class ItemsController extends Controller
             $items->installment_per_month = request('installement');
             $items->quantity = request('quantity');
             $items->save();
-            return redirect('/games');
+            return redirect('/Item');
 
         }else{
             $items = new Items();
@@ -44,7 +44,7 @@ class ItemsController extends Controller
             $items->installment_per_month = request('installement');
             $items->quantity = request('quantity');
             $items->save();
-            return redirect('/games');
+            return redirect('/Item');
         }
     }
 }
