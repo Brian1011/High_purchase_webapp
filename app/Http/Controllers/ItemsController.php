@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Items;
+use App\Manager;
 use Illuminate\Http\Request;
 
 class ItemsController extends Controller
@@ -47,4 +48,30 @@ class ItemsController extends Controller
             return redirect('/Item');
         }
     }
+
+    public function add(){
+
+        $managers = null;
+        if (request('id') !== null){
+            $managers = Manager::find(request('id'));
+            $managers->name = request('name');
+            $managers->email = request('email');
+            $managers->password = request('password');
+            $managers->category = request('category');
+            $managers->save();
+            return redirect('/Managers');
+        }else{
+
+            $managers = new Manager();
+            $managers->name = request('name');
+            $managers->email = request('email');
+            $managers->password = request('password');
+            $managers->category = request('category');
+            $managers->save();
+            return redirect('/Managers');
+        }
+
+    }
+
+
 }

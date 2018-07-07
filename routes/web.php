@@ -27,7 +27,7 @@ Route::post('/Item', 'ItemsController@addItem');
 Route::get('/ItemForm', 'ItemsController@showAddItemForm');
 
 //view updateItem Form
-Route::get('/Item/View/{id}', 'ItemsController@');
+//Route::get('/Item/View/{id}', 'ItemsController@');
 
 //view specific item
 Route::get('/Item/Edit/{id}', 'ItemsController@viewSpecificItem');
@@ -36,11 +36,16 @@ Route::get('/Item/Edit/{id}', 'ItemsController@viewSpecificItem');
 Route::get('/Item', 'ItemsController@showallItems');
 
 //view ADD manager Form
-//add manager
-//view Uodate Manager Form
-//view specific manager
-//view all managers
+Route::get('/ManagerForm', 'UsersConroller@showAddManagerForm');
 
+//add manager
+Route::post('/AddManager', 'ItemsController@add');
+
+//view specific manager
+Route::get('/Manager/Edit/{id}', 'UsersConroller@viewSpecificManager');
+
+//view all managers
+Route::get('/Managers', 'UsersConroller@showallManagers');
 //view ADD customer Form
 //add custommer
 //view Uodate customer Form

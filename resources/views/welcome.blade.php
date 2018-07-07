@@ -85,8 +85,8 @@
                 <div class="links">
                     <a href="{{url('/ItemForm')}}">Add item</a>
                     <a href="{{'/Item'}}">Items</a>
-                    <a href="https://laravel-news.com">Add manager</a>
-                    <a href="https://forge.laravel.com">Managers</a>
+                    <a href="{{'/ManagerForm'}}">Add manager</a>
+                    <a href="{{'/Managers'}}">Managers</a>
                     <a href="https://github.com/laravel/laravel">GitHub</a>
                 </div>
             </div>
