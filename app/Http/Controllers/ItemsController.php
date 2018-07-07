@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Items;
+use App\Manager;
 use Illuminate\Http\Request;
 
 class ItemsController extends Controller
@@ -47,4 +48,8 @@ class ItemsController extends Controller
             return redirect('/Item');
         }
     }
+
+
+
+
 }
