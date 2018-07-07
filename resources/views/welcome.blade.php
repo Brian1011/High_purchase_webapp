@@ -87,7 +87,7 @@
                     <a href="{{'/Item'}}">Items</a>
                     <a href="{{'/ManagerForm'}}">Add manager</a>
                     <a href="{{'/Managers'}}">Managers</a>
-                    <a href="https://github.com/laravel/laravel">GitHub</a>
+                    <a href="{{'/Register'}}">Register Customer</a>
                 </div>
             </div>
         </div>
