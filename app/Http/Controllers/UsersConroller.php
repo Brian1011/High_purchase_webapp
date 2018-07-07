@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Manager;
 use App\User;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\Request;
 
 class UsersConroller extends Controller
@@ -46,7 +47,7 @@ class UsersConroller extends Controller
             $managers = new Manager();
             $managers->name = request('name');
             $managers->email = request('email');
-            $managers->password = request('password');
+            $managers->password = Hash::make(request('password'));
             $managers->category = request('category');
             $managers->save();
             return redirect('/login');
@@ -84,7 +85,7 @@ class UsersConroller extends Controller
             $managers = Manager::find(request('id'));
             $managers->name = request('name');
             $managers->email = request('email');
-            $managers->password = request('password');
+            $managers->password = Hash::make(request('password'));
             $managers->category = request('category');
             $managers->save();
             return redirect('/Managers');
@@ -93,7 +94,7 @@ class UsersConroller extends Controller
             $managers = new Manager();
             $managers->name = request('name');
             $managers->email = request('email');
-            $managers->password = request('password');
+            $managers->password = Hash::make(request('password'));
             $managers->category = request('category');
             $managers->save();
             return redirect('/Managers');
