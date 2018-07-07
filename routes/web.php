@@ -39,7 +39,7 @@ Route::get('/Item', 'ItemsController@showallItems');
 Route::get('/ManagerForm', 'UsersConroller@showAddManagerForm');
 
 //add manager
-Route::post('/AddManager', 'ItemsController@add');
+Route::post('/AddManager', 'UsersConroller@addManager');
 
 //view specific manager
 Route::get('/Manager/Edit/{id}', 'UsersConroller@viewSpecificManager');

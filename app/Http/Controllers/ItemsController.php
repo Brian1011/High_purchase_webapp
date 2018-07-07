@@ -49,29 +49,7 @@ class ItemsController extends Controller
         }
     }
 
-    public function add(){
 
-        $managers = null;
-        if (request('id') !== null){
-            $managers = Manager::find(request('id'));
-            $managers->name = request('name');
-            $managers->email = request('email');
-            $managers->password = request('password');
-            $managers->category = request('category');
-            $managers->save();
-            return redirect('/Managers');
-        }else{
-
-            $managers = new Manager();
-            $managers->name = request('name');
-            $managers->email = request('email');
-            $managers->password = request('password');
-            $managers->category = request('category');
-            $managers->save();
-            return redirect('/Managers');
-        }
-
-    }
 
 
 }

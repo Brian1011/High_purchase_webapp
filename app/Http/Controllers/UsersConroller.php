@@ -65,23 +65,26 @@ class UsersConroller extends Controller
 
     //checks if the form is blank if it is it updates the content if it is not it creates a new item
     public function addManager(){
-//        $manager = null;
-//        if (request('id') !== null){
-//            $manager = User::find(request('id'));
-//            $manager->name = request('name');
-//            $manager->email = request('email');
-//            $manager->category = "2";
-//            $manager->password = request('password');
-//            $manager->save();
-//            return redirect('/games');
-//
-//        }else{
-            $manager = new Manager();
-            $manager->name = request('name');
-            $manager->email = request('email');
-            $manager->category = request('category');
-            $manager->password = request('password');
+
+        $managers = null;
+        if (request('id') !== null){
+            $managers = Manager::find(request('id'));
+            $managers->name = request('name');
+            $managers->email = request('email');
+            $managers->password = request('password');
+            $managers->category = request('category');
+            $managers->save();
             return redirect('/Managers');
-       // }
+        }else{
+
+            $managers = new Manager();
+            $managers->name = request('name');
+            $managers->email = request('email');
+            $managers->password = request('password');
+            $managers->category = request('category');
+            $managers->save();
+            return redirect('/Managers');
+        }
+
     }
 }
