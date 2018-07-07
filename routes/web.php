@@ -34,7 +34,7 @@ Route::get('/ItemForm', 'ItemsController@showAddItemForm');
 Route::get('/Item/View/{id}', 'ItemsController@');
 
 //view specific item
-Route::get('/Item/View/{id}', 'ItemsController@viewSpecificItem');
+Route::get('/Item/Edit/{id}', 'ItemsController@viewSpecificItem');
 
 //view all item
 Route::get('/Item', 'ItemsController@showallItems');
@@ -59,18 +59,25 @@ Route::get('/purchase', function (){
     return view('purchase_item');
 });
 
+//view all purchases made by a customer
+Route::get('/all_purchases', function (){
+   return view('all_purchases');
+});
+
 //view ADD manager Form
 Route::get('/ManagerForm', 'UsersConroller@showAddManagerForm');
 
 //add manager
 Route::post('/AddManager', 'UsersConroller@addManager');
 
+//view Update Manager Form
 //view specific manager
 Route::get('/Manager/Edit/{id}', 'UsersConroller@viewSpecificManager');
 
 //view all managers
 Route::get('/Managers', 'UsersConroller@showallManagers');
 
+//view ADD customer Form
 //add custommer
 Route::post('/AddCustomer', 'UsersConroller@addCustomer');
 
