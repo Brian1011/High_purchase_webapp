@@ -12,7 +12,7 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('index');
 });
 
 //Auth::routes();
@@ -35,9 +35,29 @@ Route::get('/Item/Edit/{id}', 'ItemsController@viewSpecificItem');
 //view all item
 Route::get('/Item', 'ItemsController@showallItems');
 
-//view ADD manager Form
+//view login
+Route::get('/login', function () {
+    return view('login');
+});
+
+//view signup
+Route::get('/signup', function () {
+    return view('signup');
+});
+
+//view add manager Form
+Route::get('/addmanager', function () {
+    return view('welcome');
+});
+
+//view one single item
+Route::get('/purchase', function (){
+    return view('purchase_item');
+});
+
 //add manager
-//view Uodate Manager Form
+
+//view Update Manager Form
 //view specific manager
 //view all managers
 
