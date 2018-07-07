@@ -20,8 +20,7 @@ class UsersConroller extends Controller
         $user = new User();
         $email = request('email');
         $password = request('password');
-//        $user['email'] = $email;
-//        $user['password'] = $password;
+
 
         if (User::where('email', '=', $email)->first()) {
 
