@@ -28,7 +28,7 @@
             <td>{{$item->months}}</td>
             <td>{{$item->installment_per_month}}</td>
             <td>{{$item->quantity}}</td>
-            <td><a href="/Item/Edit/{{$item->id}}">Edit</a></td>
+            <td><a href="/Item/View/{{$item->id}}">Edit</a></td>
         </tr>
     @endforeach
 </table>

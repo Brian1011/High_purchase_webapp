@@ -61,50 +61,20 @@
         <div class="content">
             <div class="container">
                 <h1><center>Shop Online</center></h1>
-
+                @foreach($items as $item)
                 <div class="card" style="width: 20rem; ">
-                    <a href="/purchase">
+                    <a href="/Item/View/{{$item->id}}">
                         <img src="images.jpg" alt="item Image" style="width:200px; height:200px;" class="img-responsive">
 
                         <div class="card-block">
-                            <h4>Item name: Item</h4>
-                            <h4>Price: 40,000</h4>
+                            <h4>Item Name: {{$item->item_name}}</h4>
+                            <h4>Item Image: {{$item->item_image}}</h4>
+                            <h4>Item Price: {{$item->item_price}}</h4>
                         </div>
                     </a>
                 </div>
+                @endforeach
 
-                <div class="card" style="width: 20rem; ">
-                    <a href="/purchase">
-                        <img src="images.jpg" alt="item Image" style="width:200px; height:200px;" class="img-responsive">
-
-                        <div class="card-block">
-                            <h4>Item name: Item</h4>
-                            <h4>Price: 40,000</h4>
-                        </div>
-                    </a>
-                </div>
-
-                <div class="card" style="width: 20rem; ">
-                    <a href="/purchase">
-                        <img src="images.jpg" alt="item Image" style="width:200px; height:200px;" class="img-responsive">
-
-                        <div class="card-block">
-                            <h4>Item name: Item</h4>
-                            <h4>Price: 40,000</h4>
-                        </div>
-                    </a>
-                </div>
-
-                <div class="card" style="width: 20rem; ">
-                    <a href="/purchase">
-                        <img src="images.jpg" alt="item Image" style="width:200px; height:200px;" class="img-responsive">
-
-                        <div class="card-block">
-                            <h4>Item name: Item</h4>
-                            <h4>Price: 40,000</h4>
-                        </div>
-                    </a>
-                </div>
             </div>
         </div>
 

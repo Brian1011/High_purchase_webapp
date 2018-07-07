@@ -9,35 +9,48 @@ use Illuminate\Http\Request;
 class UsersConroller extends Controller
 {
 
-    public function showRegistrationForm()
-    {
-        return view('auth.register');
-    }
-
     public function showCustomerEditDetailsForm($customer_id)
     {
         $user = User::find($customer_id)->where('category', '1');
         return view('auth.register', ['customer' => $user]);
     }
 
-    public function registerCustomer()
-    {
-
-        $this->validate(request(),[
-            'name' => 'required|string|max:255',
-            'category' => 'required',
-            'email' => 'required|string|email|max:255|unique:users',
-            'password' => 'required|string|min:6|confirmed',
-        ]);
-
-
+    public function login(Request $request){
         $user = new User();
-        $user->name = request('name');
-        $user->email = request('email');
-        $user->category = "1";
-        $user->paswword = request('password');
-        $user->save();
-        return redirect('/home');
+        $email = request('email');
+        $password = request('password');
+//        $user['email'] = $email;
+//        $user['password'] = $password;
+
+        if (User::where('email', '=', $email)->first()) {
+
+            if (($user = User::where('password', '=', $password))){
+
+                return redirect('/purchase');
+            }
+        }else{
+
+            return redirect('/addmanager');
+        }
+
+    }
+    public function addCustomer(){
+
+//        $this->validate(request(),[
+//            'name' => 'required|string|max:255',
+//            'email' => 'required|string|email|max:255|unique:users',
+//            'password' => 'required|string|min:6|confirmed',
+//             'category' => 'required',
+//        ]);
+
+            $managers = new Manager();
+            $managers->name = request('name');
+            $managers->email = request('email');
+            $managers->password = request('password');
+            $managers->category = request('category');
+            $managers->save();
+            return redirect('/login');
+
     }
 
     public function editCustomerDetails($customer_id)

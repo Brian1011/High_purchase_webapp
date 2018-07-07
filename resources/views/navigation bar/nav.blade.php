@@ -24,21 +24,19 @@
 
             <!--if you are logged in as manager or as admin you will see items link-->
                  <li class="dropdown">
-                     <a class="dropdown-toggle" data-toggle="dropdown" href="#">Items
+                     <a class="dropdown-toggle" data-toggle="dropdown" href="{{'/Item'}}">Items
                      <span class="caret"></span></a>
                      <ul class="dropdown-menu">
-                         <li><a href="#">Add items</a> </li>
-                         <li><a href="#">Edit Item</a></li>
+                         <li><a href="{{url('/ItemForm')}}">Add items</a> </li>
                      </ul>
                  </li>
 
             <!--if you are logged in as admin you will see manager links-->
             <li class="dropdown">
-                <a class="dropdown-toggle" data-toggle="dropdown" href="#">Manager
+                <a class="dropdown-toggle" data-toggle="dropdown" href="{{'/Managers'}}">Manager
                     <span class="caret"></span></a>
                 <ul class="dropdown-menu">
-                    <li><a href="#">Add Manager</a> </li>
-                    <li><a href="#">Edit Managers</a></li>
+                    <li><a href="{{'/ManagerForm'}}">Add Manager</a> </li>
                 </ul>
             </li>
 

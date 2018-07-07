@@ -24,7 +24,8 @@
         <div class="col-lg-4">
             <center>
                 <h1>Login</h1>
-                <form method="post" role="form" action="#">
+                <form method="post" action="/login" enctype="multipart/form-data">
+                    {{csrf_field()}}
                     <div class="form-group">
                         <input type="text" placeholder="Email" name="email" class="form-control" required>
                     </div>

@@ -11,8 +11,12 @@
 |
 */
 
+use App\Items;
+
 Route::get('/', function () {
-    return view('index');
+    $items = Items::all();
+    //return view('Admin.Item', ['items' =>$items]);
+    return view('index', ['items' =>$items]);
 });
 
 //Auth::routes();
@@ -30,7 +34,7 @@ Route::get('/ItemForm', 'ItemsController@showAddItemForm');
 Route::get('/Item/View/{id}', 'ItemsController@');
 
 //view specific item
-Route::get('/Item/Edit/{id}', 'ItemsController@viewSpecificItem');
+Route::get('/Item/View/{id}', 'ItemsController@viewSpecificItem');
 
 //view all item
 Route::get('/Item', 'ItemsController@showallItems');
@@ -55,14 +59,33 @@ Route::get('/purchase', function (){
     return view('purchase_item');
 });
 
+//view ADD manager Form
+Route::get('/ManagerForm', 'UsersConroller@showAddManagerForm');
+
 //add manager
+Route::post('/AddManager', 'UsersConroller@addManager');
 
-//view Update Manager Form
 //view specific manager
-//view all managers
+Route::get('/Manager/Edit/{id}', 'UsersConroller@viewSpecificManager');
 
-//view ADD customer Form
+//view all managers
+Route::get('/Managers', 'UsersConroller@showallManagers');
+
 //add custommer
+Route::post('/AddCustomer', 'UsersConroller@addCustomer');
+
+//add custommer
+Route::post('/login', 'UsersConroller@login');
+
+//add installement
+Route::post('/installement', 'InstallmentsController@addInstallement');
+
+//view specific installement
+Route::get('/myInstallement', 'InstallmentsController@viewSpecificInstallement');
+
+//view specific installement
+Route::get('/allInstallement', 'InstallmentsController@showallInstallements');
+
 //view Uodate customer Form
 //view specific customer
 //view all customers

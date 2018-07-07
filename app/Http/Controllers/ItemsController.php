@@ -15,7 +15,7 @@ class ItemsController extends Controller
 
     public function viewSpecificItem($id){
         $items = Items::find($id);
-        return view('Admin.addItem', ['items' => $items]);
+        return view('purchase_item', ['items' => $items]);
     }
 
     public function showAddItemForm(){
