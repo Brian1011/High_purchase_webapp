@@ -49,15 +49,23 @@
 
                     <!--You can only purchase if you are the customer-->
                     @if(session('user_category')== '1')
-                        <form method="post" role="form" action="/installement">
-                            {{csrf_field()}}
-                            <div class="form-group">
-                                <input type="hidden" value="{{$items->id}}" name="item_id">
-                                <input type="hidden" value="{{$items->item_price}}" name="total_amount">
-                                <input type="hidden" value="{{session('user_id')}}" name="user_id">
-                                <button type="submit" class="btn btn-lg btn-primary">Purchase</button>
+
+                        <!--But if the quantity is 0 you cant buy-->
+                        @if($items->quantity > 0)
+                            <form method="post" role="form" action="/installement">
+                                {{csrf_field()}}
+                                <div class="form-group">
+                                    <input type="hidden" value="{{$items->id}}" name="item_id">
+                                    <input type="hidden" value="{{$items->item_price}}" name="total_amount">
+                                    <input type="hidden" value="{{session('user_id')}}" name="user_id">
+                                    <button type="submit" class="btn btn-lg btn-primary">Purchase</button>
+                                </div>
+                            </form>
+                        @else
+                            <div class="alert alert-danger">
+                                <h4>Sorry, This Item is out of stock</h4>
                             </div>
-                        </form>
+                        @endif
                     @endif
 
                     <!--If admin / manager you can edit item-->

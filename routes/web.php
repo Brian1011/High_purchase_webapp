@@ -110,3 +110,6 @@ Route::get('/profile', function () {
 
 //user logout
 Route::get('/logout','UsersConroller@logout');
+
+//view all customers
+Route::get('/all_customers','UsersConroller@all_customers');

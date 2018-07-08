@@ -131,6 +131,6 @@ class UsersConroller extends Controller
     public function logout(Request $request){
         $request->session()->flush();//errase all sessions
         //go back to homepage
-        return view('login')->with('message_logout','You have logged out sucessfully');
+        return redirect('/login')->with('message_logout','You have logged out sucessfully');
     }
 }

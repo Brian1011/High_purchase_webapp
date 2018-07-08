@@ -46,6 +46,8 @@ use Illuminate\Http\Request;
                                 <li><a href="{{url('/ItemForm')}}">Add items</a> </li>
                             </ul>
                         </li>
+
+                        <li><a href="{{'/Customers'}}">All Purchases</a></li>
                     @endif
 
                 <!--if you are logged in as admin you will see manager links-->

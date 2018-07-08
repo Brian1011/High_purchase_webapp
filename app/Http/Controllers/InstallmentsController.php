@@ -31,6 +31,14 @@ class InstallmentsController extends Controller
             $installemts->amount_paid = 0;
             $installemts->total_amount = request('total_amount');
             $installemts->save();
+
+            /*
+                also get the item using the
+                item id and subtract 1
+             */
+            $items = new Items();
+            $items::where('id',request('item_id'))->decrement('quantity',1);
+
             return back()->with('message','You have sucessfully bought this item. Click My purchases to view your items.');
            // return $installemts;
         }
