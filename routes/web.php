@@ -73,7 +73,6 @@ Route::get('/ManagerForm', 'UsersConroller@showAddManagerForm');
 //add manager
 Route::post('/AddManager', 'UsersConroller@addManager');
 
-//view Update Manager Form
 //view specific manager
 Route::get('/Manager/Edit/{id}', 'UsersConroller@viewSpecificManager');
 
@@ -96,10 +95,6 @@ Route::get('/myInstallement', 'InstallmentsController@viewSpecificInstallement')
 //view specific installement
 Route::get('/allInstallement', 'InstallmentsController@showallInstallements');
 
-//view Uodate customer Form
-//view specific customer
-//view all customers
-
 //login the user
 Route::post('/login','UsersConroller@login');
 
@@ -112,4 +107,13 @@ Route::get('/profile', function () {
 Route::get('/logout','UsersConroller@logout');
 
 //view all customers
-Route::get('/all_customers','UsersConroller@all_customers');
+Route::get('/all_customers','UsersConroller@showAllPurchases');
+
+//Delete a payment record
+Route::get('/delete_installment/{id}','InstallmentsController@delete_installment');
+
+//Show payment form
+Route::get('/add_payment/{id}','InstallmentsController@show_user_payment');
+
+//Add user payment to the database
+Route::post('/add_payment/','InstallmentsController@add_user_payment');

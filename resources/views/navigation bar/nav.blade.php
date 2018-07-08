@@ -47,7 +47,7 @@ use Illuminate\Http\Request;
                             </ul>
                         </li>
 
-                        <li><a href="{{'/Customers'}}">All Purchases</a></li>
+                        <li><a href="{{'/all_customers'}}">All Purchases</a></li>
                     @endif
 
                 <!--if you are logged in as admin you will see manager links-->

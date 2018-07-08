@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\installments;
+use App\Items;
 use App\Manager;
 use App\User;
 use Illuminate\Support\Facades\Hash;
@@ -52,6 +54,7 @@ class UsersConroller extends Controller
         }
 
     }
+
     public function addCustomer(){
 
         //1. ensure data is not empty
@@ -128,9 +131,42 @@ class UsersConroller extends Controller
 
     }
 
+    //logout the user from the system
     public function logout(Request $request){
         $request->session()->flush();//errase all sessions
         //go back to homepage
         return redirect('/login')->with('message_logout','You have logged out sucessfully');
     }
+
+    //see all the purchases made by all customers
+    public function showAllPurchases(){
+        //go to installments
+        $installments = new installments();
+        $all_installments = $installments::all();
+
+        //loop through each installment and add customer details
+        foreach ($all_installments as $in){
+            //get the user id for each customer
+            $cust_id = $in->user_id;
+            $item_id = $in->item_id;
+            $customer_info = Manager::find($cust_id);
+
+            //add customer name to array
+            $in['cust_name']=$customer_info->name;
+            $in['email']=$customer_info->email;
+            $in['category']=$customer_info->category;
+
+            //add item installment months
+            $items = Items::find($item_id);
+            $in['item_image'] = $items->item_image;
+            $in['months']=$items->months;
+            $in['item_name']=$items->item_name;
+            $in['installment_per_month']=$items->installment_per_month;
+        }
+
+        //return to customer page
+        return view('all_customers',['customers'=>$all_installments]);
+    }
+
+
 }

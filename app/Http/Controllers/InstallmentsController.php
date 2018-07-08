@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\installments;
 use App\Items;
+use App\Manager;
 use Illuminate\Http\Request;
 
 class InstallmentsController extends Controller
@@ -81,4 +82,46 @@ class InstallmentsController extends Controller
 
         return view('all_purchases',['user_installment'=>$user_installments]);
     }
+
+    //show_user_payment
+    public function show_user_payment($id){
+        //return a view with details
+        $user_installments = installments::find($id);
+        $user_id = $user_installments->user_id;
+        $item_id = $user_installments->item_id;
+
+        //get the user name and email
+        $user = Manager::find($user_id);
+        $user_installments['name']=$user->name;
+        $user_installments['email']=$user->email;
+
+        //add item installment months
+        $items = Items::find($item_id);
+        $user_installments['item_image'] = $items->item_image;
+        $user_installments['months']=$items->months;
+        $user_installments['item_name']=$items->item_name;
+        $user_installments['installment_per_month']=$items->installment_per_month;
+
+        return view('add_customer_payment',['user_installment'=>$user_installments]);
+    }
+
+    //delete an installment record
+    public function delete_installment($id){
+        $installment = installments::find($id);
+        $installment->delete();
+        return back()->with('message','Record Erased Sucessfully');
+    }
+
+    //Update the payment of the user
+    public function add_user_payment(Request $request){
+        //take the payment plan
+        $montly_installment = $request->input('montly_installment');
+        $installment_id = $request->input('installment_id');
+
+        //Add to the previous amount this amount
+        installments::where('id',$installment_id)->increment('amount_paid',$montly_installment);
+
+        return back()->with('message',''.$montly_installment.' Ksh has been added to this account');
+    }
+
 }
