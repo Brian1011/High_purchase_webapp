@@ -17,31 +17,51 @@ class UsersConroller extends Controller
     }
 
     public function login(Request $request){
-        $user = new User();
-        $email = request('email');
-        $password = request('password');
+        //no need for validation
+        $user = new Manager();
 
+        //check if the email address exists
+        $email = $request->input('email');
+        $user_pass = $request->input('password');
+        $user['email'] = $email;
 
-        if (User::where('email', '=', $email)->first()) {
+        if($user = Manager::where('email','=',$email)->first()){
+            /*
+             *  email exists
+             *  Go to database and select password
+             */
 
-            if (($user = User::where('password', '=', $password))){
+            if(Hash::check($user_pass,$user->password)){
+                //$user['authorize'] = "authorized";
 
-                return redirect('/purchase');
+                //store a piece of info after login
+                session(['user_id'=>$user->id]);
+                session(['user_name'=>$user->name]);
+                session(['user_email'=>$user->email]);
+                session(['user_category'=>$user->category]);
+
+                return view('profile');
+
+            }else{
+                //$user['authorize'] = "Not Authorized";
+                return view('login')->with('message','Invalid Email or password');
             }
+
         }else{
 
-            return redirect('/addmanager');
+            return view('login')->with('message','Invalid Email or password');
         }
 
     }
     public function addCustomer(){
 
-//        $this->validate(request(),[
-//            'name' => 'required|string|max:255',
-//            'email' => 'required|string|email|max:255|unique:users',
-//            'password' => 'required|string|min:6|confirmed',
-//             'category' => 'required',
-//        ]);
+        //1. ensure data is not empty
+        $this->validate(request(),[
+            'name' => 'required|string|max:255',
+            'email' => 'required|string|email|max:255|unique:customer',
+            'password' => 'required|string|min:6|confirmed',
+            'category' => 'required',
+        ]);
 
             $managers = new Manager();
             $managers->name = request('name');
@@ -49,7 +69,7 @@ class UsersConroller extends Controller
             $managers->password = Hash::make(request('password'));
             $managers->category = request('category');
             $managers->save();
-            return redirect('/login');
+            return view('login')->with('message','You have been signed Up');
 
     }
 
@@ -82,7 +102,7 @@ class UsersConroller extends Controller
         //1. ensure data is not empty
         $this->validate(request(),[
             'name' => 'required|string|max:255',
-            'email' => 'required|string|email|max:255|unique:users',
+            'email' => 'required|string|email|max:255|unique:customer',
             'password' => 'required|string|min:6|confirmed',
             'category' => 'required',
         ]);
@@ -107,5 +127,11 @@ class UsersConroller extends Controller
             return redirect('/Managers')->with('message','Record has been saved sucessfully');
         }
 
+    }
+
+    public function logout(Request $request){
+        $request->session()->flush();//errase all sessions
+        //go back to homepage
+        return view('login')->with('message_logout','You have logged out sucessfully');
     }
 }

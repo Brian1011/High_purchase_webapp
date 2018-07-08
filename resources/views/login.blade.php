@@ -24,6 +24,20 @@
         <div class="col-lg-4">
             <center>
                 <h1>Login</h1>
+
+                <!--Check for sucess message-->
+                @if(session()->has('message'))
+                    <div class="alert alert-danger">
+                        {{session()->get('message')}}
+                    </div>
+                @endif
+
+                @if(session()->has('message_logout'))
+                    <div class="alert alert-success">
+                        {{session()->get('message_logout')}}
+                    </div>
+                @endif
+
                 <form method="post" action="/login" enctype="multipart/form-data">
                     {{csrf_field()}}
                     <div class="form-group">
@@ -35,7 +49,7 @@
                     </div>
 
                     <div class="form-group">
-                        <button type="submit" class="btn btn-primary">Submit</button>
+                        <button type="submit" class="btn btn-primary">Login</button>
                     </div>
                 </form>
             </center>

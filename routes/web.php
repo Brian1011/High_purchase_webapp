@@ -101,3 +101,14 @@ Route::get('/allInstallement', 'InstallmentsController@showallInstallements');
 //view Uodate customer Form
 //view specific customer
 //view all customers
+
+//login the user
+Route::post('/login','UsersConroller@login');
+
+//show user profile
+Route::get('/profile', function () {
+    return view('profile');
+});
+
+//user logout
+Route::get('/logout','UsersConroller@logout');

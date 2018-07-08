@@ -25,6 +25,25 @@
         <div class="col-lg-4">
             <center>
                 <h1>Signup</h1>
+                <!--Check if there are errors-->
+                @if ($errors->any())
+                    <div class="alert alert-danger">
+                        <ul>
+                            <!--if errors exist print all of them-->
+                            @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif
+
+            <!--Check for sucess message-->
+                @if(session()->has('message'))
+                    <div class="alert alert-success">
+                        {{session()->get('message')}}
+                    </div>
+                @endif
+
                 <form method="post" action="/AddCustomer" enctype="multipart/form-data">
                     {{csrf_field()}}
                     <div class="form-group">
@@ -40,7 +59,7 @@
                     </div>
 
                     <div class="form-group">
-                        <input type="password" placeholder="Confirm Password" name="pass2" class="form-control" required>
+                        <input type="password" placeholder="Confirm Password" name="password_confirmation" class="form-control" required>
                     </div>
                     <input type="hidden" name="category" value="1">
                     <div class="form-group">
