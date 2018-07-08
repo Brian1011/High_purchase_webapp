@@ -65,9 +65,7 @@ Route::get('/purchase', function (){
 });
 
 //view all purchases made by a customer
-Route::get('/all_purchases', function (){
-   return view('all_purchases');
-});
+Route::get('/all_purchases', 'InstallmentsController@showCustomerInstallments');
 
 //view ADD manager Form
 Route::get('/ManagerForm', 'UsersConroller@showAddManagerForm');

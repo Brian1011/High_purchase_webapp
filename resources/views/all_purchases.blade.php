@@ -35,25 +35,18 @@
                     </tr>
 
                     <!--Loop through the data-->
-                    <tr class="info">
-                        <td><img src="" alt="item" style="width:100px; height:100px;"></td>
-                        <td>Fridge</td>
-                        <td>70,000</td>
-                        <td>10,000</td>
-                        <td>40,000</td>
-                        <td>30,000</td>
-                        <td>3</td>
-                    </tr>
+                    @foreach($user_installment as $user_installment)
+                        <tr class="info">
+                            <td><img src="/images/{{$user_installment->item_image}}" alt="item" style="width:100px; height:100px;"></td>
+                            <td>{{$user_installment->item_name}}</td>
+                            <td>{{$user_installment ->total_amount}}</td>
+                            <td>{{$user_installment->installment_per_month}}</td>
+                            <td>{{$user_installment ->amount_paid}}</td>
+                            <td>{{$user_installment ->total_amount - $user_installment ->amount_paid}}</td>
+                            <td>{{ ($user_installment->total_amount - $user_installment->amount_paid) / $user_installment-> installment_per_month}}</td>
+                        </tr>
+                    @endforeach
 
-                    <tr class="info">
-                        <td><img src="" alt="item" style="width:100px; height:100px;"></td>
-                        <td>Fridge</td>
-                        <td>70,000</td>
-                        <td>10,000</td>
-                        <td>40,000</td>
-                        <td>30,000</td>
-                        <td>3</td>
-                    </tr>
                 </table>
         </div>
 

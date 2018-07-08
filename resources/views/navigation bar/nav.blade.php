@@ -28,30 +28,37 @@ use Illuminate\Http\Request;
 
         <ul class="nav navbar-nav">
             <!--if you are logged in as customer you will see purchases-->
-                <li><a href="/all_purchases">Purchases</a></li>
+            @if(session("user_category")=="1")
+                <li><a href="/all_purchases">My Purchases</a></li>
+            @endif
 
             <!--check if session exists-->
             @if(session()->exists('user_email'))
                 <!--You are logged in-->
-                <!--if you are logged in as manager or as admin you will see items link-->
-                    <li class="dropdown">
-                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">Items
-                            <span class="caret"></span></a>
-                        <ul class="dropdown-menu">
-                            <li><a href="{{'/Item'}}">All items</a> </li>
-                            <li><a href="{{url('/ItemForm')}}">Add items</a> </li>
-                        </ul>
-                    </li>
 
-                    <!--if you are logged in as admin you will see manager links-->
-                    <li class="dropdown">
-                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">Manager
-                            <span class="caret"></span></a>
-                        <ul class="dropdown-menu">
-                            <li><a href="{{'/Managers'}}">All Managers</a> </li>
-                            <li><a href="{{'/ManagerForm'}}">Add Manager</a> </li>
-                        </ul>
-                    </li>
+                <!--if you are logged in as manager or as admin you will see items link-->
+                    @if(session("user_category")=="2" || session("user_category")=="3")
+                        <li class="dropdown">
+                            <a class="dropdown-toggle" data-toggle="dropdown" href="#">Items
+                                <span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="{{'/Item'}}">All items</a> </li>
+                                <li><a href="{{url('/ItemForm')}}">Add items</a> </li>
+                            </ul>
+                        </li>
+                    @endif
+
+                <!--if you are logged in as admin you will see manager links-->
+                    @if(session("user_category")=="3")
+                        <li class="dropdown">
+                            <a class="dropdown-toggle" data-toggle="dropdown" href="#">Manager
+                                <span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="{{'/Managers'}}">All Managers</a> </li>
+                                <li><a href="{{'/ManagerForm'}}">Add Manager</a> </li>
+                            </ul>
+                        </li>
+                    @endif
         </ul>
 
                 <!--Appears at the rigt handside of the navigation bar-->

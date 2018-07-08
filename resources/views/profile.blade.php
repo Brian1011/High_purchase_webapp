@@ -24,29 +24,30 @@
 
         <div class="col-lg-4">
             <center>
-                <h1>Profile Page</h1>
+                <h1>Profile Page</h1></center>
                 <form method="post" role="form" action="#">
+
                     <div class="form-group">
-                        <input type="text" placeholder="Name" name="name" class="form-control" required>
+                        User Id:
+                        <input type="text" value="{{session('user_id')}}" class="form-control" placeholder="User Id" readonly>
                     </div>
 
                     <div class="form-group">
-                        <input type="text" placeholder="Email" name="email" class="form-control" required>
+                        Name:
+                        <input type="text" placeholder="Name" name="name" class="form-control" required value="{{session('user_name')}}" readonly>
                     </div>
 
                     <div class="form-group">
-                        <input type="password" placeholder="Password" name="pass1" class="form-control" required>
+                        Email:
+                        <input type="text" placeholder="Email" name="email" class="form-control" required value="{{session('user_email')}}" readonly>
                     </div>
 
-                    <div class="form-group">
-                        <input type="password" placeholder="Confirm Password" name="pass2" class="form-control" required>
-                    </div>
-
+                    <!--
                     <div class="form-group">
                         <button type="submit" class="btn btn-primary">Submit</button>
                     </div>
+                    -->
                 </form>
-            </center>
         </div>
 
         <div class="col-lg-4"></div>

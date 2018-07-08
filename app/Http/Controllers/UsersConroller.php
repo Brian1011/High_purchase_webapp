@@ -39,17 +39,16 @@ class UsersConroller extends Controller
                 session(['user_name'=>$user->name]);
                 session(['user_email'=>$user->email]);
                 session(['user_category'=>$user->category]);
-
                 return view('profile');
 
             }else{
                 //$user['authorize'] = "Not Authorized";
-                return view('login')->with('message','Invalid Email or password');
+                return back()->with('message','Invalid Email or password');
             }
 
         }else{
 
-            return view('login')->with('message','Invalid Email or password');
+            return back()->with('message','Invalid Email or password');
         }
 
     }
