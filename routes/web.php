@@ -27,13 +27,18 @@ Route::get('/register', 'UsersConroller@showRegistrationForm');
 //add item
 Route::post('/Item', 'ItemsController@addItem');
 
+//add items view
+Route::get('/Item_add',function (){
+   return view('Admin/addItem');
+});
+
 //view addItem Form
 Route::get('/ItemForm', 'ItemsController@showAddItemForm');
 
-//view updateItem Form
-Route::get('/Item/View/{id}', 'ItemsController@viewSpecificItem');
+//user views a single item
+Route::get('/Item/View/{id}', 'ItemsController@purchaseItem');
 
-//view specific item
+//Update a specific item
 Route::get('/Item/Edit/{id}', 'ItemsController@viewSpecificItem');
 
 //view all item

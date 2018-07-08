@@ -10,6 +10,11 @@
 <head>
     <title></title>
     <link rel="stylesheet" href="{{asset('css/app.css')}}">
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+
+    <!-- Latest compiled JavaScript -->
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 </head>
 <body>
 <nav class="navbar navbar-inverse">
@@ -24,18 +29,20 @@
 
             <!--if you are logged in as manager or as admin you will see items link-->
                  <li class="dropdown">
-                     <a class="dropdown-toggle" data-toggle="dropdown" href="{{'/Item'}}">Items
+                     <a class="dropdown-toggle" data-toggle="dropdown" href="#">Items
                      <span class="caret"></span></a>
                      <ul class="dropdown-menu">
+                         <li><a href="{{'/Item'}}">All items</a> </li>
                          <li><a href="{{url('/ItemForm')}}">Add items</a> </li>
                      </ul>
                  </li>
 
             <!--if you are logged in as admin you will see manager links-->
             <li class="dropdown">
-                <a class="dropdown-toggle" data-toggle="dropdown" href="{{'/Managers'}}">Manager
+                <a class="dropdown-toggle" data-toggle="dropdown" href="#">Manager
                     <span class="caret"></span></a>
                 <ul class="dropdown-menu">
+                    <li><a href="{{'/Managers'}}">All Managers</a> </li>
                     <li><a href="{{'/ManagerForm'}}">Add Manager</a> </li>
                 </ul>
             </li>

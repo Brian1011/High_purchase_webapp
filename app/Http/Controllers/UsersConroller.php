@@ -77,7 +77,15 @@ class UsersConroller extends Controller
     }
 
     //checks if the form is blank if it is it updates the content if it is not it creates a new item
-    public function addManager(){
+    public function addManager(Request $request){
+        //validations
+        //1. ensure data is not empty
+        $this->validate(request(),[
+            'name' => 'required|string|max:255',
+            'email' => 'required|string|email|max:255|unique:users',
+            'password' => 'required|string|min:6|confirmed',
+            'category' => 'required',
+        ]);
 
         $managers = null;
         if (request('id') !== null){
@@ -87,7 +95,7 @@ class UsersConroller extends Controller
             $managers->password = Hash::make(request('password'));
             $managers->category = request('category');
             $managers->save();
-            return redirect('/Managers');
+            return redirect('/Managers')->with('message','Record has been updated sucessfully');
         }else{
 
             $managers = new Manager();
@@ -96,7 +104,7 @@ class UsersConroller extends Controller
             $managers->password = Hash::make(request('password'));
             $managers->category = request('category');
             $managers->save();
-            return redirect('/Managers');
+            return redirect('/Managers')->with('message','Record has been saved sucessfully');
         }
 
     }

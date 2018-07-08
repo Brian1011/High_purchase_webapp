@@ -11,15 +11,46 @@
     <title>Add Manager</title>
 </head>
 <body>
-<form method="post" action="/AddManager" enctype="multipart/form-data">
-    {{csrf_field()}}
+<!--the navigation bar-->
+@include('navigation bar/nav')
+<div class="container">
+    <h1><center>Add Manager</center></h1>
+    <div class="row">
+        <div class="col-lg-3"></div>
+        <div class="col-lg-6">
+            <!--Check if there are errors-->
+            @if ($errors->any())
+                <div class="alert alert-danger">
+                    <ul>
+                        <!--if errors exist print all of them-->
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
 
-    Manager Name: <input type="text" name="name" title="" value="{{$manager->name or ''}}"><br><br>
-    Manager Email: <input type="text" name="email" title="" value="{{$manager->email or ''}}"><br><br>
-    Manager Password: <input type="text" name="password" title="" value="{{$manager->password or ''}}"><br>
-    <input type="hidden" name="category" value="{{'2'}}">
-    <input type="hidden" name="id" value="{{$manager->id or ''}}">
-    <button type="submit">Submit Manager</button>
-</form>
+        <!--Check for sucess message-->
+            @if(session()->has('message'))
+                <div class="alert alert-success">
+                    {{session()->get('message')}}
+                </div>
+            @endif
+
+
+            <form method="post" action="/AddManager" enctype="multipart/form-data">
+                {{csrf_field()}}
+
+                Manager Name: <input type="text" name="name" title="" value="{{$manager->name or ''}}" class="form-control"><br>
+                Manager Email: <input type="text" name="email" title="" value="{{$manager->email or ''}}" class="form-control"><br>
+                Manager Password: <input type="password" name="password" title="" value="{{$manager->password or ''}}" class="form-control"><br>
+                Confirm Password: <input type="password" name="password_confirmation" title="" value="{{$manager->password or ''}}" class="form-control"><br>
+                <input type="hidden" name="category" value="{{'2'}}">
+                <input type="hidden" name="id" value="{{$manager->id or ''}}">
+                <button type="submit" class="btn btn-primary">Submit Manager</button>
+            </form>
+        </div>
+    </div>
+</div>
 </body>
 </html>

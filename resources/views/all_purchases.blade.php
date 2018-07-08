@@ -36,7 +36,7 @@
 
                     <!--Loop through the data-->
                     <tr class="info">
-                        <td><img src="images.jpg" alt="item" style="width:100px; height:100px;"></td>
+                        <td><img src="" alt="item" style="width:100px; height:100px;"></td>
                         <td>Fridge</td>
                         <td>70,000</td>
                         <td>10,000</td>
@@ -46,7 +46,7 @@
                     </tr>
 
                     <tr class="info">
-                        <td><img src="images.jpg" alt="item" style="width:100px; height:100px;"></td>
+                        <td><img src="" alt="item" style="width:100px; height:100px;"></td>
                         <td>Fridge</td>
                         <td>70,000</td>
                         <td>10,000</td>
